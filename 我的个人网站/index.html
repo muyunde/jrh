@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人作品集 · 可下载作品</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 添加一点内联样式让下载按钮更好看（不影响原有风格） -->
+    <style>
+        /* 保证下载按钮在任何屏幕下都有合适间距，如果style.css中有冲突可微调 */
+        .project-download {
+            margin-top: 20px;
+        }
+        .download-btn {
+            display: inline-block;
+            background-color: #2ecc71; /* 清新的绿色按钮 */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .download-btn i {
+            margin-right: 8px;
+        }
+        .download-btn:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+        /* 保持卡片内内容排列 */
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .skill-tags {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <a href="#home">我的个人网站</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#projects">项目展示</a></li>
+                <li><a href="#achievements">荣誉成就</a></li>
+                <li><a href="#contact">联系我</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 首页部分 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>欢迎来到我的个人网站</h1>
+            <p>一名充满热情的学生开发者</p>
+            <a href="#projects" class="cta-button">查看我的作品</a>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <p>我是一名学生开发者，热衷于软件开发和网站设计。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目展示 (已为两个作品分别添加下载链接) -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>项目展示</h2>
+            <div class="project-grid">
+                <!-- 项目卡片 1 - 宁学通 -->
+                                 <div class="project-card">
+                    <div class="project-info">
+                        <h3>倒数日计时</h3>
+                        <p>该软件功能全面，UI界面美观，设计初衷在于在这个信息忙碌的时代有太多的人忘记了重要的人与事，该项目旨在记录提醒。</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">计算机网络技术基础</span>
+                            <span class="skill-tag">Linux基础</span>
+                            <span class="skill-tag">Java程序设计</span>
+                            <span class="skill-tag">C语言程序设计</span>
+                            <span class="skill-tag">数据库应用基础</span>
+                            <span class="skill-tag">Python程序设计</span>
+                            <span class="skill-tag">数据采集与处理</span>
+                            <span class="skill-tag">网页设计与制作</span>
+                            <span class="skill-tag">大数据系统运维</span>
+                            <span class="skill-tag">数据清洗</span>
+                            <span class="skill-tag">数据分析与可视化</span>
+                            <span class="skill-tag">UI设计</span>
+                            <span class="skill-tag">scratch图形化设计</span>
+                            <span class="skill-tag">机器人科学</span>
+                        </div>
+                        <!-- 作品下载链接 2：倒数日计时APK (请替换为真实下载地址) -->
+                        <div class="project-download">
+                            <a href="./倒数日计时.apk" class="download-btn" download target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-download"></i> 下载倒数日计时 APK
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 可继续添加其他项目卡片，每个卡片都可放置下载按钮 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 荣誉成就 -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2>荣誉成就</h2>
+            <div class="achievements-grid">
+                <!-- 成就卡片 -->
+                <div class="achievement-card">
+                    <i class="fas fa-trophy"></i>
+                    <p>
+                        2023年固原市职业技术学校职业技能大赛物联网技术应用赛项三等奖 <br />
+                        2023年宁夏回族自治区职业技能大赛"中银杯"移动应用赛项二等奖 <br />
+                        2024年固原市职业技术学校优秀团员 <br />
+                        2024年固原市职业技术学校职业技能大赛移动应用赛项一等奖 <br />
+                        2024年固原市职业技术学校职业技能大赛大数据技术应用赛项二等奖 <br />
+                        2025年固原市职业技术学校优秀团干部 <br />
+                        2025年固原市职业技术学校优秀团员 <br />
+                        2025年固原市职业技术学校三好学生 <br />
+                        2025年固原市职业技术学校职业技能大赛大数据技术应用赛项一等奖 <br />
+                        2025年固原市职业技术学校职业技能大赛物联网技术应用赛项一等奖 <br />
+                        2025年固原市职业技术学校职业技能大赛数据标注赛项一等奖<br />
+                        被推荐为“2026年固原市职业技术学校三好学生”及“2026年固原市职业技术学校优秀毕业生”</p>
+                    </p>
+                </div>
+                <!-- 可以添加更多成就卡片 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>联系我</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>邮箱：3543355811@qq.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>   <!-- 原代码用了github图标，这里微调为电话图标更合适，但保持原样也无妨；为了准确，我保留原github图标但建议用电话，这里尊重原结构，不过给电话和微信用回正确图标 -->
+                        <p>电话：17309596943</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-weixin"></i>      <!-- 原为github，改为微信图标更贴切 -->
+                        <p>微信：hua0106758</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 我的个人作品集. </p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <!-- 小提示：请将两个下载链接的 href="#" 替换为您实际的APK文件地址，即可正常下载 -->
+</body>
+</html>
