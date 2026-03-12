@@ -2,19 +2,236 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>我的个人作品集 · 可下载作品</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- 添加一点内联样式让下载按钮更好看（不影响原有风格） -->
     <style>
-        /* 保证下载按钮在任何屏幕下都有合适间距，如果style.css中有冲突可微调 */
-        .project-download {
-            margin-top: 20px;
+        /* ===== 全局重置与基础样式 ===== */
+        * {
+            box-sizing: border-box;
         }
+
+        body {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.5;
+            -webkit-tap-highlight-color: transparent;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ===== 导航栏基础样式 ===== */
+        .navbar {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* 桌面端导航链接 */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        /* 移动端汉堡菜单按钮（默认隐藏） */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #333;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        /* ===== 移动端导航样式 (汉堡菜单) ===== */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;  /* 显示汉堡按钮 */
+            }
+
+            .nav-links {
+                display: none;   /* 默认隐藏导航链接 */
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                width: 100%;
+                background-color: #f8f9fa;
+                position: absolute;
+                top: 100%;       /* 紧贴在导航栏下方 */
+                left: 0;
+                padding: 1rem 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                border-bottom: 1px solid #e9ecef;
+                z-index: 99;
+            }
+
+            .nav-links.active {
+                display: flex;   /* 点击后显示 */
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                margin: 0;
+                border-bottom: 1px solid #e9ecef;
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 15px 0;
+                font-size: 18px;
+            }
+        }
+
+        /* 首页标题自适应 */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            .hero p {
+                font-size: 18px;
+            }
+            .cta-button {
+                padding: 12px 24px;
+                font-size: 16px;
+            }
+        }
+
+        /* 项目卡片移动端优化 */
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px;
+            }
+
+            .project-card {
+                padding: 20px 15px;
+            }
+
+            .skill-tags {
+                justify-content: center;
+            }
+
+            .skill-tag {
+                font-size: 13px;
+                padding: 5px 10px;
+                margin: 3px;
+            }
+
+            .project-download {
+                width: 100%;
+            }
+
+            .download-btn {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+                padding: 14px 20px;
+                font-size: 16px;
+                box-sizing: border-box;
+            }
+        }
+
+        /* 荣誉成就卡片优化 */
+        @media (max-width: 768px) {
+            .achievement-card {
+                padding: 20px 15px;
+                font-size: 15px;
+            }
+            .achievement-card i {
+                font-size: 40px;
+            }
+            .achievement-card p {
+                margin: 10px 0 0;
+                word-break: break-word;
+            }
+        }
+
+        /* 联系方式优化 */
+        @media (max-width: 600px) {
+            .contact-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .contact-item {
+                width: 100%;
+                justify-content: flex-start;
+                padding: 8px 0;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+            }
+
+            .contact-item i {
+                width: 30px;
+                font-size: 22px;
+            }
+
+            .contact-item p {
+                font-size: 16px;
+                margin: 0;
+                word-break: break-word;
+            }
+        }
+
+        /* 页脚文字 */
+        @media (max-width: 480px) {
+            footer p {
+                font-size: 14px;
+            }
+        }
+
+        /* 下载按钮样式 */
         .download-btn {
-            display: inline-block;
-            background-color: #2ecc71; /* 清新的绿色按钮 */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2ecc71;
             color: white;
             padding: 10px 20px;
             border-radius: 40px;
@@ -29,11 +246,14 @@
         .download-btn i {
             margin-right: 8px;
         }
-        .download-btn:hover {
-            background-color: #27ae60;
-            transform: translateY(-2px);
+        @media (hover: hover) {
+            .download-btn:hover {
+                background-color: #27ae60;
+                transform: translateY(-2px);
+            }
         }
-        /* 保持卡片内内容排列 */
+
+        /* 辅助类 */
         .project-info {
             display: flex;
             flex-direction: column;
@@ -41,6 +261,9 @@
         }
         .skill-tags {
             margin-bottom: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
         }
     </style>
 </head>
@@ -51,7 +274,11 @@
             <div class="logo">
                 <a href="#home">我的个人网站</a>
             </div>
-            <ul class="nav-links">
+            <!-- 汉堡菜单按钮（移动端显示） -->
+            <button class="menu-toggle" id="menuToggle" aria-label="菜单">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">首页</a></li>
                 <li><a href="#about">关于我</a></li>
                 <li><a href="#projects">项目展示</a></li>
@@ -81,13 +308,13 @@
         </div>
     </section>
 
-    <!-- 项目展示 (已为两个作品分别添加下载链接) -->
+    <!-- 项目展示 -->
     <section id="projects" class="projects">
         <div class="container">
             <h2>项目展示</h2>
             <div class="project-grid">
-                <!-- 项目卡片 1 - 宁学通 -->
-                                 <div class="project-card">
+                <!-- 项目卡片 1 - 倒数日计时 -->
+                <div class="project-card">
                     <div class="project-info">
                         <h3>倒数日计时</h3>
                         <p>该软件功能全面，UI界面美观，设计初衷在于在这个信息忙碌的时代有太多的人忘记了重要的人与事，该项目旨在记录提醒。</p>
@@ -107,7 +334,6 @@
                             <span class="skill-tag">scratch图形化设计</span>
                             <span class="skill-tag">机器人科学</span>
                         </div>
-                        <!-- 作品下载链接 2：倒数日计时APK (请替换为真实下载地址) -->
                         <div class="project-download">
                             <a href="./倒数日计时.apk" class="download-btn" download target="_blank" rel="noopener noreferrer">
                                 <i class="fas fa-download"></i> 下载倒数日计时 APK
@@ -115,7 +341,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- 可继续添加其他项目卡片，每个卡片都可放置下载按钮 -->
+                <!-- 可继续添加其他项目卡片 -->
             </div>
         </div>
     </section>
@@ -125,12 +351,11 @@
         <div class="container">
             <h2>荣誉成就</h2>
             <div class="achievements-grid">
-                <!-- 成就卡片 -->
                 <div class="achievement-card">
                     <i class="fas fa-trophy"></i>
                     <p>
                         2023年固原市职业技术学校职业技能大赛物联网技术应用赛项三等奖 <br />
-                        2023年宁夏回族自治区职业技能大赛"中银杯"移动应用赛项二等奖 <br />
+                        2023年宁夏回族自治区职业技能大赛“中银杯”移动应用赛项二等奖 <br />
                         2024年固原市职业技术学校优秀团员 <br />
                         2024年固原市职业技术学校职业技能大赛移动应用赛项一等奖 <br />
                         2024年固原市职业技术学校职业技能大赛大数据技术应用赛项二等奖 <br />
@@ -139,11 +364,10 @@
                         2025年固原市职业技术学校三好学生 <br />
                         2025年固原市职业技术学校职业技能大赛大数据技术应用赛项一等奖 <br />
                         2025年固原市职业技术学校职业技能大赛物联网技术应用赛项一等奖 <br />
-                        2025年固原市职业技术学校职业技能大赛数据标注赛项一等奖<br />
-                        被推荐为“2026年固原市职业技术学校三好学生”及“2026年固原市职业技术学校优秀毕业生”</p>
+                        2025年固原市职业技术学校职业技能大赛数据标注赛项一等奖 <br />
+                        被推荐为“2026年固原市职业技术学校三好学生”及“2026年固原市职业技术学校优秀毕业生”
                     </p>
                 </div>
-                <!-- 可以添加更多成就卡片 -->
             </div>
         </div>
     </section>
@@ -159,11 +383,11 @@
                         <p>邮箱：3543355811@qq.com</p>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-phone-alt"></i>   <!-- 原代码用了github图标，这里微调为电话图标更合适，但保持原样也无妨；为了准确，我保留原github图标但建议用电话，这里尊重原结构，不过给电话和微信用回正确图标 -->
+                        <i class="fas fa-phone-alt"></i>
                         <p>电话：17309596943</p>
                     </div>
                     <div class="contact-item">
-                        <i class="fab fa-weixin"></i>      <!-- 原为github，改为微信图标更贴切 -->
+                        <i class="fab fa-weixin"></i>
                         <p>微信：hua0106758</p>
                     </div>
                 </div>
@@ -179,6 +403,25 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <!-- 小提示：请将两个下载链接的 href="#" 替换为您实际的APK文件地址，即可正常下载 -->
+    <!-- 汉堡菜单交互脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // 点击导航链接后自动关闭菜单（可选）
+            const links = navLinks.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        });
+    </script>
+    <!-- 小提示：请将下载链接的href替换为您实际的APK文件地址 -->
 </body>
 </html>
